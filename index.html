@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Adrian Salceanu — AI Engineering</title>
+<meta name="description" content="Independent AI engineer helping teams adopt AI — from prototypes to production systems, integrations, and team workflows. Startup founder, CTO for 5+ years." />
+<meta property="og:title" content="Adrian Salceanu — AI Engineering" />
+<meta property="og:description" content="From AI prototypes to production systems." />
+<meta property="og:type" content="website" />
+<meta name="color-scheme" content="light dark" />
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #faf6f4;
+    --bg-tint: #f4eae9;
+    --panel: #ffffff;
+    --line: #ecdfdc;
+    --line-soft: #f1e7e5;
+    --ink: #1c1418;
+    --ink-mid: #6d5a61;
+    --ink-dim: #9a878d;
+    --plum: #7a2748;
+    --plum-deep: #5f1c38;
+    --plum-soft: #f2e1e8;
+    --plum-tint: #faeef2;
+    --plum-fill: #7a2748;
+    --plum-fill-hover: #5f1c38;
+    --nav-bg: rgba(250,246,244,0.82);
+    --glow: rgba(122,39,72,0.10);
+    --shadow-plum: rgba(122,39,72,0.40);
+    --detail-hi: #fdf4f8;
+    --detail-a: #f2e2e9;
+    --detail-b: #e7d0db;
+    --chip-bg: rgba(255,255,255,0.92);
+    --chip-bg-hover: #ffffff;
+    --dot: rgba(122,39,72,0.28);
+    --dots-pattern: rgba(122,39,72,0.13);
+    --logo-tile: #ffffff;
+    --contact-from: #ffffff;
+    color-scheme: light;
+    --radius: 14px;
+    --maxw: 900px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+    --bg: #141013;
+    --bg-tint: #1d171a;
+    --panel: #1b1519;
+    --line: #342a2f;
+    --line-soft: #2a2226;
+    --ink: #f3ecef;
+    --ink-mid: #bcaab1;
+    --ink-dim: #8b7b81;
+    --plum: #e595b7;
+    --plum-deep: #f2b8d0;
+    --plum-soft: #4b2b39;
+    --plum-tint: #2a1a22;
+    --plum-fill: #8f3258;
+    --plum-fill-hover: #a53d68;
+    --nav-bg: rgba(20,16,19,0.82);
+    --glow: rgba(229,149,183,0.10);
+    --shadow-plum: rgba(0,0,0,0.6);
+    --detail-hi: #3a2330;
+    --detail-a: #2a1a22;
+    --detail-b: #1f141a;
+    --chip-bg: rgba(33,25,29,0.92);
+    --chip-bg-hover: #2c2226;
+    --dot: rgba(229,149,183,0.35);
+    --dots-pattern: rgba(229,149,183,0.12);
+    --logo-tile: #f5f1ef;
+    --contact-from: #1f171b;
+    color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141013;
+    --bg-tint: #1d171a;
+    --panel: #1b1519;
+    --line: #342a2f;
+    --line-soft: #2a2226;
+    --ink: #f3ecef;
+    --ink-mid: #bcaab1;
+    --ink-dim: #8b7b81;
+    --plum: #e595b7;
+    --plum-deep: #f2b8d0;
+    --plum-soft: #4b2b39;
+    --plum-tint: #2a1a22;
+    --plum-fill: #8f3258;
+    --plum-fill-hover: #a53d68;
+    --nav-bg: rgba(20,16,19,0.82);
+    --glow: rgba(229,149,183,0.10);
+    --shadow-plum: rgba(0,0,0,0.6);
+    --detail-hi: #3a2330;
+    --detail-a: #2a1a22;
+    --detail-b: #1f141a;
+    --chip-bg: rgba(33,25,29,0.92);
+    --chip-bg-hover: #2c2226;
+    --dot: rgba(229,149,183,0.35);
+    --dots-pattern: rgba(229,149,183,0.12);
+    --logo-tile: #f5f1ef;
+    --contact-from: #1f171b;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 72px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Familjen Grotesk", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.62;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: var(--plum); text-decoration: none; }
+  a:hover { color: var(--plum-deep); }
+  ::selection { background: var(--plum-fill); color: #fff; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    font-weight: 600; font-size: 0.72rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--plum); margin-bottom: 14px; display: block;
+  }
+
+  h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(10px);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink); }
+  .brand span { color: var(--plum); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { color: var(--ink-mid); font-size: 0.9rem; font-weight: 500; transition: color .18s; }
+  .nav-links a:hover { color: var(--plum); }
+  .nav-cta {
+    color: #fff !important; background: var(--plum-fill);
+    padding: 7px 15px; border-radius: 999px; transition: background .18s;
+  }
+  .nav-cta:hover { background: var(--plum-fill-hover); }
+  @media (max-width: 680px) { .nav-links a.hide-sm { display: none; } }
+  .theme-toggle {
+    display: grid; place-items: center; width: 34px; height: 34px; padding: 0;
+    border: 1px solid var(--line); border-radius: 999px; background: transparent;
+    color: var(--ink-mid); cursor: pointer; transition: color .18s, border-color .18s;
+  }
+  .theme-toggle:hover { color: var(--plum); border-color: var(--plum-soft); }
+  .theme-toggle svg { display: none; }
+  .theme-toggle[data-mode="auto"] .i-auto, .theme-toggle[data-mode="light"] .i-light, .theme-toggle[data-mode="dark"] .i-dark { display: block; }
+  .nav-links { gap: 22px; }
+
+  /* ---------- Intro / About ---------- */
+  .intro { padding: 88px 0 64px; position: relative; overflow: hidden; }
+  .intro::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(680px 340px at 82% -10%, var(--glow), transparent 62%);
+    pointer-events: none;
+  }
+  .intro h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    margin: 0 0 22px; max-width: 16ch;
+  }
+  .intro h1 .hl { color: var(--plum); }
+  .intro .lead { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--ink-mid); max-width: 60ch; margin: 0 0 16px; }
+  .intro .lead strong { color: var(--ink); font-weight: 600; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 999px;
+    font-size: 0.95rem; font-weight: 600; transition: transform .12s, background .18s, border-color .18s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--plum-fill); color: #fff !important; }
+  .btn-primary:hover { background: var(--plum-fill-hover); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink) !important; background: var(--panel); }
+  .btn-ghost:hover { border-color: var(--plum); color: var(--plum) !important; }
+
+  .help-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 44px; }
+  @media (max-width: 680px) { .help-grid { grid-template-columns: 1fr; } }
+  .help { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px 22px; transition: border-color .2s, box-shadow .2s; }
+  .help:hover { border-color: var(--plum-soft); box-shadow: 0 10px 30px -20px var(--shadow-plum); }
+  .help h3 { font-size: 1.08rem; margin: 0 0 8px; color: var(--ink); letter-spacing: -0.01em; display: flex; align-items: baseline; }
+  .help .sep { color: var(--plum); font-weight: 500; margin-right: 9px; }
+  .help p { margin: 0; color: var(--ink-mid); font-size: 0.93rem; line-height: 1.55; }
+
+  .about-body { margin-top: 40px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .about-body p { color: var(--ink-mid); margin: 0; max-width: 68ch; }
+  .about-body p strong { color: var(--ink); font-weight: 600; }
+  .about-body a { color: var(--plum); text-decoration: underline; text-decoration-color: var(--plum-soft); text-decoration-thickness: 2px; text-underline-offset: 3px; transition: text-decoration-color .18s; }
+  .about-body a:hover { text-decoration-color: var(--plum); }
+  .about-body a strong { color: inherit; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .chip {
+    font-size: 0.82rem; color: var(--plum); background: var(--plum-tint);
+    border: 1px solid var(--plum-soft); border-radius: 7px; padding: 5px 11px; font-weight: 500;
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 68px 0; border-top: 1px solid var(--line-soft); }
+  .sec-head { margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(1.55rem, 3.4vw, 2.05rem); margin: 0; }
+  .sec-head p { color: var(--ink-mid); max-width: 62ch; margin: 14px 0 0; }
+
+  /* ---------- My work ---------- */
+  .pf-group { margin-bottom: 44px; }
+  .pf-group:last-child { margin-bottom: 0; }
+  .pf-group > .eyebrow { margin-bottom: 18px; }
+  .pf-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 700px) { .pf-grid { grid-template-columns: 1fr; } }
+  .pf-card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 10px;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+    display: flex; flex-direction: column;
+  }
+  .pf-card:hover { border-color: var(--plum-soft); transform: translateY(-2px); box-shadow: 0 10px 30px -18px var(--shadow-plum); }
+  .pf-body { padding: 14px 12px 12px; display: flex; flex-direction: column; flex: 1; }
+  .pf-card .top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .pf-card h3 { font-size: 1.18rem; margin: 0; color: var(--ink); }
+  .pf-card h3 a { color: var(--ink); }
+  .pf-card h3 a:hover { color: var(--plum); }
+  .pf-card p { color: var(--ink-mid); font-size: 0.94rem; margin: 12px 0 0; flex: 1; }
+  .pf-card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .pf-card .tags span { font-size: 0.7rem; color: var(--ink-dim); border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; }
+
+  /* Screenshot thumbnail (one or more slides) */
+  .thumb {
+    position: relative; display: block; width: 100%;
+    aspect-ratio: 16 / 10; overflow: hidden; cursor: zoom-in;
+    border: 1px solid var(--line-soft); border-radius: 9px; background: var(--bg-tint);
+    -webkit-tap-highlight-color: transparent; touch-action: pan-y;
+  }
+  .thumb:focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; }
+  .thumb .slides img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    opacity: 0; transition: opacity .5s ease, transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .thumb .slides img.on { opacity: 1; }
+
+  /* Detail crop: a 1:1 slice of the UI floating on a soft backdrop, bleeding off the edges */
+  .thumb.detail {
+    border-color: transparent;
+    background:
+      radial-gradient(140% 110% at 0% 0%, var(--detail-hi) 0%, transparent 55%),
+      linear-gradient(155deg, var(--detail-a) 0%, var(--detail-b) 100%);
+  }
+  .thumb.detail .slides img {
+    inset: auto; left: 7%; top: 12%;
+    width: 600px; height: auto; max-width: none; object-fit: initial;
+    border-radius: 10px 0 0 0;
+    box-shadow: 0 0 0 1px rgba(60,20,40,0.10), 0 24px 48px -22px rgba(60,20,40,0.45);
+  }
+  .thumb.detail:hover .slides img { transform: translate(-5px, -5px); }
+
+  /* Zoom badge, arrows and dots */
+  .thumb .zoom, .thumb .nav {
+    position: absolute; display: grid; place-items: center; border-radius: 999px;
+    background: var(--chip-bg); color: var(--plum);
+    box-shadow: 0 4px 14px -6px rgba(28,20,24,0.35);
+    opacity: 0; transition: opacity .2s, transform .2s;
+  }
+  .thumb .zoom { right: 10px; bottom: 10px; width: 32px; height: 32px; transform: translateY(4px); pointer-events: none; }
+  .thumb .nav { top: 50%; width: 34px; height: 34px; margin-top: -17px; border: 0; padding: 0; cursor: pointer; z-index: 2; }
+  .thumb .nav.prev { left: 10px; } .thumb .nav.next { right: 10px; }
+  .thumb .nav:hover { background: var(--chip-bg-hover); }
+  .thumb:hover .zoom, .thumb:focus-visible .zoom, .thumb:hover .nav, .thumb:focus-within .nav { opacity: 1; transform: none; }
+  .thumb .dots {
+    position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 2;
+    display: flex; gap: 6px; padding: 6px 9px; border-radius: 999px;
+    background: var(--chip-bg); box-shadow: 0 4px 14px -8px rgba(28,20,24,0.4);
+  }
+  .thumb .dots button { width: 6px; height: 6px; padding: 0; border: 0; border-radius: 999px; background: var(--dot); cursor: pointer; transition: width .25s, background .25s; }
+  .thumb .dots button.on { width: 16px; background: var(--plum-fill); }
+  @media (hover: none) { .thumb .zoom, .thumb .nav { opacity: 1; transform: none; } }
+
+  /* Logo tile: a brand mark centred on white, not zoomable */
+  .thumb.logo { cursor: default; background: var(--logo-tile); border-color: var(--line); }
+  .thumb.logo .slides img {
+    inset: 0; margin: auto; width: auto; height: clamp(90px, 46%, 124px);
+    object-fit: contain; transition: transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .pf-card:hover .thumb.logo .slides img { transform: scale(1.04); }
+  .thumb.logo img { mix-blend-mode: multiply; }  /* lets white logo backgrounds melt into the tile */
+  .thumb.logo.mascot .slides img { height: clamp(120px, 68%, 180px); }
+  .thumb.logo .lockup {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 4%;
+    transition: transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .pf-card:hover .thumb.logo .lockup { transform: scale(1.04); }
+  .thumb.logo .lockup img { width: clamp(64px, 24%, 104px); height: auto; }
+  .thumb.logo .wordmark {
+    font-family: "Instrument Sans", system-ui, sans-serif; color: #1F2B78;
+    font-size: clamp(1.9rem, 5vw, 2.7rem); line-height: 1; letter-spacing: -0.03em; font-weight: 400;
+  }
+  .thumb.logo .wordmark b { font-weight: 600; }
+
+  /* Placeholder until a screenshot is added */
+  .thumb.empty { cursor: default; background:
+      radial-gradient(circle at 1px 1px, var(--dots-pattern) 1px, transparent 0) 0 0 / 14px 14px,
+      linear-gradient(160deg, var(--plum-tint), var(--bg-tint)); }
+  .thumb.empty .slides, .thumb.empty .zoom { display: none; }
+  .thumb.empty::before {
+    content: attr(data-label); position: absolute; inset: 0;
+    display: grid; place-items: center; padding: 0 20px; text-align: center;
+    font-weight: 700; font-size: clamp(1.15rem, 2.6vw, 1.5rem); letter-spacing: -0.02em; color: var(--plum);
+  }
+
+  /* Lightbox */
+  #lightbox { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; overflow: visible; }
+  #lightbox::backdrop { background: rgba(28,20,24,0.86); backdrop-filter: blur(4px); }
+  #lightbox figure { margin: 0; }
+  #lightbox img { display: block; max-width: min(calc(100vw - 150px), 1600px); max-height: 82vh; margin: 0 auto; border-radius: 10px; box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6); }
+  #lightbox img.swap { animation: lb-in .25s ease-out; }
+  #lightbox figcaption { color: rgba(255,255,255,0.85); text-align: center; font-size: 0.9rem; margin-top: 14px; }
+  #lightbox figcaption .count { color: rgba(255,255,255,0.5); margin-left: 10px; font-variant-numeric: tabular-nums; }
+  .lb-btn {
+    position: fixed; width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center;
+    border: 0; padding: 0; background: rgba(255,255,255,0.14); color: #fff; cursor: pointer; transition: background .18s;
+  }
+  .lb-btn:hover { background: rgba(255,255,255,0.26); }
+  .lb-close { top: 16px; right: 16px; }
+  .lb-prev { left: 16px; top: 50%; margin-top: -22px; }
+  .lb-next { right: 16px; top: 50%; margin-top: -22px; }
+  #lightbox:not(.multi) .lb-prev, #lightbox:not(.multi) .lb-next { display: none; }
+  @media (max-width: 640px) { #lightbox img { max-width: 94vw; } .lb-prev, .lb-next { top: auto; bottom: 18px; margin-top: 0; } }
+  @keyframes lb-in { from { opacity: 0; transform: scale(.985); } }
+
+  /* ---------- Experience ---------- */
+  .role { display: grid; grid-template-columns: 145px 1fr; gap: 28px; padding: 26px 0; border-top: 1px solid var(--line-soft); }
+  .role:first-child { border-top: none; padding-top: 0; }
+  .role .when { color: var(--ink-dim); font-size: 0.84rem; font-weight: 500; padding-top: 5px; }
+  .role .when.now { color: var(--plum); }
+  .role h3 { font-size: 1.22rem; margin: 0 0 4px; color: var(--ink); }
+  .role .org { color: var(--ink-mid); font-size: 0.92rem; margin-bottom: 12px; }
+  .role .org b { color: var(--ink); font-weight: 600; }
+  .role .org a { color: inherit; text-decoration: underline; text-decoration-color: var(--plum-soft); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .role .org a:hover { color: var(--plum); text-decoration-color: var(--plum); }
+  .role p { color: var(--ink-mid); font-size: 0.96rem; margin: 0; }
+  .role ul { margin: 10px 0 0; padding-left: 18px; color: var(--ink-mid); font-size: 0.94rem; }
+  .role ul li { margin-bottom: 6px; }
+  .role ul li b { color: var(--ink); font-weight: 600; }
+  .role .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .role .tags span { font-size: 0.7rem; color: var(--ink-dim); background: var(--bg-tint); border: 1px solid var(--line-soft); border-radius: 6px; padding: 3px 9px; }
+  @media (max-width: 620px) { .role { grid-template-columns: 1fr; gap: 6px; } .role .when { padding-top: 0; } }
+  .earlier { margin-top: 24px; color: var(--ink-dim); font-size: 0.9rem; line-height: 1.7; }
+  .earlier b { color: var(--ink-mid); font-weight: 600; }
+
+  /* ---------- Education / two-col lists ---------- */
+  .list { list-style: none; margin: 0; padding: 0; }
+  .list li { padding: 14px 0; border-top: 1px solid var(--line-soft); display: flex; gap: 18px; }
+  .list li:first-child { border-top: none; }
+  .list li .yr { color: var(--ink-dim); font-size: 0.8rem; min-width: 78px; flex-shrink: 0; padding-top: 3px; font-weight: 500; }
+  .list li .body b { color: var(--ink); font-weight: 600; display: block; }
+  .list li .body span { color: var(--ink-mid); font-size: 0.92rem; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+  @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; gap: 32px; } }
+  .two-col h3 { font-size: 1.02rem; margin: 0 0 6px; color: var(--ink); }
+
+  /* ---------- Contact ---------- */
+  .contact { border-top: 1px solid var(--line-soft); }
+  .contact-box {
+    background: linear-gradient(160deg, var(--contact-from), var(--plum-tint));
+    border: 1px solid var(--plum-soft); border-radius: 20px;
+    padding: 48px 40px; text-align: center;
+  }
+  .contact-box h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 14px; }
+  .contact-box p { color: var(--ink-mid); max-width: 46ch; margin: 0 auto 26px; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; align-items: baseline; margin-top: 26px; }
+  .contact-links a { color: var(--ink-mid); font-size: 0.9rem; font-weight: 500; }
+  .contact-links a:hover { color: var(--plum); }
+  .contact-links .loc { color: var(--ink-dim); font-size: 0.9rem; font-weight: 500; line-height: inherit; }
+
+  footer { padding: 36px 0 56px; }
+  .foot-inner { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; color: var(--ink-dim); font-size: 0.82rem; }
+  .foot-inner .r { font-weight: 500; letter-spacing: 0.04em; }
+
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">Adrian Salceanu<span>.</span></a>
+    <nav class="nav-links">
+      <a class="hide-sm" href="#about">About me</a>
+      <a class="hide-sm" href="#portfolio">My work</a>
+      <a class="hide-sm" href="#experience">Experience</a>
+      <a class="hide-sm" href="#education">Education</a>
+      <button class="theme-toggle" type="button" data-mode="auto" aria-label="Theme: auto (follows your system)" title="Theme: auto">
+        <svg class="i-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg>
+        <svg class="i-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="nav-cta" href="mailto:hello@essenciary.com">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- INTRO + ABOUT -->
+  <section class="intro" id="about" style="border-top:none;">
+    <div class="wrap">
+      <span class="eyebrow">AI Engineering</span>
+      <h1>From AI prototypes to <span class="hl">production systems</span>.</h1>
+      <p class="lead">
+        I help teams adopt AI and put it to work: from the first
+        prototype to systems that hold up in production, and the team workflows that make it stick.
+        <strong>Startup founder</strong> (SpeedInvest · Expa · Antler) and
+        <strong>CTO for 5+ years</strong> — I take the work from strategy all the way to implementation.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:hello@essenciary.com">Work with me →</a>
+        <a class="btn btn-ghost" href="#portfolio">See my work</a>
+      </div>
+
+      <div class="help-grid">
+        <div class="help">
+          <h3><span class="sep">/</span>Prototype &amp; build</h3>
+          <p>AI prototypes built quickly to prove the value, then hardened for production — agentic systems, orchestration, evals and guardrails.</p>
+        </div>
+        <div class="help">
+          <h3><span class="sep">/</span>Integrate</h3>
+          <p>Connect AI to your platform — MCP servers, Claude and ChatGPT apps, plugins and extensions, API and tool integrations.</p>
+        </div>
+        <div class="help">
+          <h3><span class="sep">/</span>Adopt &amp; enable</h3>
+          <p>AI adoption strategy and hands-on training for your team — AI coding, agentic development, new ways of working.</p>
+        </div>
+        <div class="help">
+          <h3><span class="sep">/</span>Knowledge &amp; workflows</h3>
+          <p>Knowledge bases and automated workflows that put your company's data and processes to work.</p>
+        </div>
+      </div>
+
+      <div class="about-body">
+        <p>
+          Over two decades building production software as an engineer, architect, CTO and founder,
+          now focused on applied AI. I work with teams on scoped, project-based engagements, whether
+          they're starting out with AI or scaling what they already have.
+        </p>
+        <p>
+          Founder at <a href="https://opentide.ai" target="_blank" rel="noopener"><strong>OpenTide.ai</strong></a> and Head of AI
+          Engineering at <a href="https://olbg.com" target="_blank" rel="noopener"><strong>OLBG</strong></a>. Previously founder at
+          <a href="https://genieframework.com" target="_blank" rel="noopener"><strong>Genie</strong></a>. Creator of
+          <a href="https://genieframework.com" target="_blank" rel="noopener"><strong>Genie Framework</strong></a>.
+          Postgraduate diploma in <strong>AI &amp; Deep Learning</strong>, UPC Barcelona. Master's degree
+          in <strong>Advanced Computer Science</strong>, University of Liverpool.
+        </p>
+        <div class="chips">
+          <span class="chip">Agentic systems</span><span class="chip">LLM orchestration</span><span class="chip">Context engineering</span>
+          <span class="chip">MCP</span><span class="chip">AI coding</span><span class="chip">Claude</span>
+          <span class="chip">PyTorch</span><span class="chip">Python</span><span class="chip">TypeScript</span>
+          <span class="chip">Deep learning</span><span class="chip">AI strategy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>My work</h2>
+        <p>What I'm building — for my clients and the open-source community.</p>
+      </div>
+
+      <div class="pf-group">
+        <span class="eyebrow">Products</span>
+        <div class="pf-grid">
+          <article class="pf-card">
+            <div class="thumb detail" data-label="Tide" role="button" tabindex="0" aria-label="Enlarge Tide screenshots"><div class="slides"><img src="img/work/tide-detail.webp" data-full="img/work/tide.webp" alt="Tide — Agent: every change comes with its why and approach" loading="lazy" width="1200" height="800" /><img data-src="img/work/tide-2-detail.webp" data-full="img/work/tide-2.webp" alt="Tide — Diagram: a live call graph of the running app" loading="lazy" width="1200" height="800" /><img data-src="img/work/tide-3-detail.webp" data-full="img/work/tide-3.webp" alt="Tide — Preview: the running app next to its live request logs" loading="lazy" width="1200" height="801" /><img data-src="img/work/tide-4-detail.webp" data-full="img/work/tide-4.webp" alt="Tide — Verification: every changeset checked before it counts as done" loading="lazy" width="1200" height="800" /><img data-src="img/work/tide-5-detail.webp" data-full="img/work/tide-5.webp" alt="Tide — Docs & code: generated documentation next to the source" loading="lazy" width="1200" height="798" /><img data-src="img/work/tide-6-detail.webp" data-full="img/work/tide-6.webp" alt="Tide — Search & Git: find anything, then commit and push" loading="lazy" width="1199" height="798" style="width:599px" /><img data-src="img/work/tide-7-detail.webp" data-full="img/work/tide-7.webp" alt="Tide — Tests: the app’s test suite, run inside the kernel" loading="lazy" width="1114" height="743" style="width:557px" /><img data-src="img/work/tide-8-detail.webp" data-full="img/work/tide-8.webp" alt="Tide — Audits: accessibility, code quality, performance, security, SEO" loading="lazy" width="938" height="678" style="width:469px" /><img data-src="img/work/tide-9-detail.webp" data-full="img/work/tide-9.webp" alt="Tide — Tools: 38 built-in tools the agent works with" loading="lazy" width="1200" height="799" /><img data-src="img/work/tide-10-detail.webp" data-full="img/work/tide-10.webp" alt="Tide — REPL: evaluate code inside the running kernel" loading="lazy" width="1200" height="800" /><img data-src="img/work/tide-11-detail.webp" data-full="img/work/tide-11.webp" alt="Tide — Settings: a model for each job: agent, planning, import, verification" loading="lazy" width="1200" height="800" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3><a href="https://opentide.ai" target="_blank" rel="noopener">Tide</a></h3></div>
+              <p>The IDE reinvented for AI — direct AI agents to build and modify a live application, on top of OpenTide, an open runtime. Agents inspect and change the running app through MCP tools.</p>
+              <div class="tags"><span>Deno</span><span>TypeScript</span><span>MCP</span><span>Claude</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb detail" data-label="Semnas" role="button" tabindex="0" aria-label="Enlarge Semnas screenshots"><div class="slides"><img src="img/work/semnas-1-detail.webp" data-full="img/work/semnas-1.webp" alt="Semnas — Library" loading="lazy" width="1200" height="800" /><img data-src="img/work/semnas-2-detail.webp" data-full="img/work/semnas-2.webp" alt="Semnas — Brief: one summary at a time" loading="lazy" width="1200" height="800" /><img data-src="img/work/semnas-3-detail.webp" data-full="img/work/semnas-3.webp" alt="Semnas — Reader with AI summary and audio" loading="lazy" width="1200" height="800" /><img data-src="img/work/semnas-4-detail.webp" data-full="img/work/semnas-4.webp" alt="Semnas — Key points in the margin" loading="lazy" width="1200" height="759" /><img data-src="img/work/semnas-5-detail.webp" data-full="img/work/semnas-5.webp" alt="Semnas — Ask about the article" loading="lazy" width="1200" height="801" /><img data-src="img/work/semnas-6-detail.webp" data-full="img/work/semnas-6.webp" alt="Semnas — Reading view" loading="lazy" width="1200" height="801" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3><a href="https://semnas.com" target="_blank" rel="noopener">Semnas</a></h3></div>
+              <p>A read-later and bookmarks app — a focused, well-crafted home for the things worth coming back to.</p>
+              <div class="tags"><span>Product</span><span>Design</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb detail" data-label="YouKaraoke" role="button" tabindex="0" aria-label="Enlarge YouKaraoke screenshots"><div class="slides"><img src="img/work/youkaraoke-1-detail.webp" data-full="img/work/youkaraoke-1.webp" alt="YouKaraoke — Seven stems separated from one song, with sections detected" loading="lazy" width="1200" height="800" /><img data-src="img/work/youkaraoke-2-detail.webp" data-full="img/work/youkaraoke-2.webp" alt="YouKaraoke — Current output: stem model, lyrics transcription, chart and tempo/key analysis" loading="lazy" width="1200" height="800" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>YouKaraoke</h3></div>
+              <p>AI music analysis and stem extraction on self-hosted models: takes songs via the YouTube API, splits them into instrument and vocal stems, detects tempo, key and song sections, and transcribes the lyrics.</p>
+              <div class="tags"><span>Audio ML</span><span>Demucs</span><span>Whisper</span><span>Self-hosted models</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="pf-group">
+        <span class="eyebrow">Open source</span>
+        <div class="pf-grid">
+          <article class="pf-card">
+            <div class="thumb logo" data-label="Genie Framework"><div class="slides"><img class="on" src="img/work/genie-logo.png" alt="Genie Framework logo" width="247" height="226" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3><a href="https://genieframework.com" target="_blank" rel="noopener">Genie Framework</a></h3></div>
+              <p>A full-stack web framework for Julia — an ecosystem of 15+ open-source packages spanning servers, reactive UIs, ORM, and deployment. Grown to thousands of users across academia and industry.</p>
+              <div class="tags"><span>Julia</span><span>Web</span><span>OSS</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb logo mascot" data-label="Genie Builder"><div class="slides"><img class="on" src="img/work/geniebuilder-logo.png" alt="Genie Builder logo" width="518" height="491" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>Genie Builder</h3></div>
+              <p>A VS Code extension pairing a visual UI builder with a low-code Julia backend, so developers ship data apps without the boilerplate.</p>
+              <div class="tags"><span>VS Code</span><span>Low-code</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb logo" data-label="OpenTide"><div class="lockup"><img src="img/work/opentide-logo.svg" alt="OpenTide logo" width="200" height="200" /><span class="wordmark">Open<b>Tide</b></span></div></div>
+            <div class="pf-body">
+              <div class="top"><h3><a href="https://opentide.ai" target="_blank" rel="noopener">OpenTide</a></h3></div>
+              <p>The open runtime beneath Tide — a long-running kernel that holds an app in memory and exposes it to AI agents as first-class, verifiable mutations over an append-only log.</p>
+              <div class="tags"><span>Deno</span><span>Event-sourcing</span><span>Formal methods</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb detail" data-label="Genie Agents" role="button" tabindex="0" aria-label="Enlarge Genie Agents screenshot"><div class="slides"><img src="img/work/genie-agents-detail.webp" data-full="img/work/genie-agents.webp" alt="Genie Agents: an agent works through specs, BDD, plan, code and validation to build a data app" loading="lazy" width="1200" height="800" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>Genie Agents</h3></div>
+              <p>An agentic system for generating Genie applications from custom-trained models — an EU grant-funded on-ramp from framework tooling into AI engineering.</p>
+              <div class="tags"><span>Agents</span><span>Codegen</span><span>Fine-tuning</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="pf-group">
+        <span class="eyebrow">AI at OLBG</span>
+        <div class="pf-grid">
+          <article class="pf-card">
+            <div class="thumb detail" data-label="Worktron" role="button" tabindex="0" aria-label="Enlarge Worktron screenshots"><div class="slides"><img src="img/work/worktron-1-detail.webp" data-full="img/work/worktron-1.webp" alt="Worktron — Projects: tasks, pull requests, and the latest AI audits with their cost" loading="lazy" width="1200" height="800" /><img data-src="img/work/worktron-2-detail.webp" data-full="img/work/worktron-2.webp" alt="Worktron — Audits per project, run on demand or hooked into GitHub" loading="lazy" width="1199" height="800" /><img data-src="img/work/worktron-3-detail.webp" data-full="img/work/worktron-3.webp" alt="Worktron — Fleet-wide audit definitions, such as the SEO competitive audit" loading="lazy" width="1199" height="800" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>Worktron</h3></div>
+              <p>An agent-orchestration platform running autonomous agents in production inside a regulated, high-traffic environment.</p>
+              <div class="tags"><span>Agents</span><span>Orchestration</span><span>Production AI</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb detail" data-label="OLBG.brain" role="button" tabindex="0" aria-label="Enlarge OLBG.brain screenshots"><div class="slides"><img src="img/work/olbg-brain-1-detail.webp" data-full="img/work/olbg-brain-1.webp" alt="OLBG.brain — Ask it about itself: a shared team memory for notes, decisions and skills" loading="lazy" width="1200" height="800" /><img data-src="img/work/olbg-brain-2-detail.webp" data-full="img/work/olbg-brain-2.webp" alt="OLBG.brain — Admin: skill promotions waiting on a team decider, and procedures Claude noticed" loading="lazy" width="1200" height="800" /><img data-src="img/work/olbg-brain-3-detail.webp" data-full="img/work/olbg-brain-3.webp" alt="OLBG.brain — Installed as a Claude extension, with per-tool permissions" loading="lazy" width="1200" height="800" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>OLBG.brain</h3></div>
+              <p>A shared team memory that plugs into Claude and Chrome: save notes, decisions and reusable skills once, and everyone they’re shared with can search and use them. Includes skill promotion to teams, access control and a leaked-credentials check.</p>
+              <div class="tags"><span>Knowledge systems</span><span>MCP</span><span>Claude</span><span>Chrome extension</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb detail" data-label="OLBG AI Search" role="button" tabindex="0" aria-label="Enlarge OLBG AI Search screenshot"><div class="slides"><img src="img/work/olbg-ai-search-detail.webp" data-full="img/work/olbg-ai-search.webp" alt="OLBG AI Search: an AI answer above the regular results for “football tips”, with live tips, odds and links" loading="lazy" width="1200" height="801" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>OLBG AI Search</h3></div>
+              <p>AI answers at the top of OLBG’s site search: live tips with odds, tip counts and links to the matching pages, shown above the regular results.</p>
+              <div class="tags"><span>AI search</span><span>Retrieval</span><span>Production AI</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb detail" data-label="OLBG Bot" role="button" tabindex="0" aria-label="Enlarge OLBG Bot screenshots"><div class="slides"><img src="img/work/olbg-bot-1-detail.webp" data-full="img/work/olbg-bot-1.webp" alt="OLBG Bot — Ask in plain language, like “best tip for tomorrow”" loading="lazy" width="1200" height="800" style="width:430px" /><img data-src="img/work/olbg-bot-2-detail.webp" data-full="img/work/olbg-bot-2.webp" alt="OLBG Bot — Answers come back as live tip cards, with odds and tipster consensus" loading="lazy" width="1200" height="800" style="width:430px" /><img data-src="img/work/olbg-bot-3-detail.webp" data-full="img/work/olbg-bot-3.webp" alt="OLBG Bot — Tipster profiles with profit history and strike rate" loading="lazy" width="1200" height="800" style="width:430px" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>OLBG Bot</h3></div>
+              <p>The OLBG Tips Bot: ask in plain language for tips, tipsters or odds, and get answers built from the site’s live data, returned as rich tip and tipster cards.</p>
+              <div class="tags"><span>Chatbot</span><span>LLMs</span><span>Production AI</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="pf-group">
+        <span class="eyebrow">Client work</span>
+        <div class="pf-grid">
+          <article class="pf-card">
+            <div class="thumb detail" data-label="Nextmol" role="button" tabindex="0" aria-label="Enlarge Nextmol screenshots"><div class="slides"><img src="img/work/nextmol-1-detail.webp" data-full="img/work/nextmol-1.webp" alt="Nextmol — Claude connected to the Nextmol platform through its MCP server" loading="lazy" width="1200" height="800" /><img data-src="img/work/nextmol-2-detail.webp" data-full="img/work/nextmol-2.webp" alt="Nextmol — Installed as a Claude extension, with 30 platform tools" loading="lazy" width="1200" height="800" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>Nextmol</h3></div>
+              <p>An MCP server and Claude plugin integrating a computational-chemistry platform and its API with Claude — so researchers can drive the platform directly from AI.</p>
+              <div class="tags"><span>MCP</span><span>Python</span><span>FastMCP</span><span>Claude</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb detail" data-label="Neuroblox" role="button" tabindex="0" aria-label="Enlarge Neuroblox screenshot"><div class="slides"><img src="img/work/neuroblox-detail.webp" data-full="img/work/neuroblox.webp" alt="Neuroblox: a corticostriatal circuit for Parkinson’s, with drug, stimulus and deep-brain-stimulation inputs and live signal outputs" loading="lazy" width="1177" height="785" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>Neuroblox</h3></div>
+              <p>The interactive UI for a neural-circuit simulation platform, used by neuroscientists to model brain interventions in silico.</p>
+              <div class="tags"><span>Julia</span><span>Neuroscience</span><span>UI</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb detail" data-label="Quantum Savory Studio" role="button" tabindex="0" aria-label="Enlarge Quantum Savory Studio screenshot"><div class="slides"><img src="img/work/quantumsavory-detail.webp" data-full="img/work/quantumsavory.webp" alt="Quantum Savory Studio: a quantum network laid out on a map, with link distance and delay" loading="lazy" width="1200" height="800" /></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>Quantum Savory Studio</h3></div>
+              <p>A visual studio for designing and simulating quantum networks on the QuantumSavory toolkit: place nodes on a map, configure slots and protocols, and run simulations.</p>
+              <div class="tags"><span>Julia</span><span>Quantum computing</span><span>UI</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Work experience</h2>
+      </div>
+      <div class="xp">
+
+        <div class="role">
+          <div class="when now">2025 — now</div>
+          <div>
+            <h3>Founder</h3>
+            <div class="org"><b><a href="https://opentide.ai" target="_blank" rel="noopener">OpenTide.ai</a></b></div>
+            <p>Building the next generation of AI-native development tools.</p>
+            <div class="tags"><span>Agents</span><span>MCP</span><span>TypeScript</span><span>Deno</span></div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when now">2025 — now</div>
+          <div>
+            <h3>CTO &amp; Head of AI Engineering</h3>
+            <div class="org"><b>OLBG</b> — UK sports-media &amp; betting affiliate platform</div>
+            <p>Leading AI adoption and engineering across a high-traffic, regulated product.</p>
+            <div class="tags"><span>Agents</span><span>Orchestration</span><span>Knowledge systems</span><span>PyTorch</span><span>Python</span></div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when">2020 — 2025</div>
+          <div>
+            <h3>Co-founder</h3>
+            <div class="org"><b>Genie</b> — Amsterdam / Barcelona</div>
+            <p>Founded and led a venture-backed developer-tooling company around the Genie Framework.</p>
+            <div class="tags"><span>Julia</span><span>TypeScript</span><span>Codegen</span><span>Fundraising</span></div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when">2015 — 2020</div>
+          <div>
+            <h3>CTO</h3>
+            <div class="org"><b>OLBG</b> — Bristol, UK</div>
+            <p>Transformed a traditional sports-media company into a data-driven, ML-powered platform.</p>
+            <div class="tags"><span>Architecture</span><span>ML</span><span>Team leadership</span></div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when">2011 — 2015</div>
+          <div>
+            <h3>CTO / Founder</h3>
+            <div class="org"><b>Aprefis</b> (Washington DC / Miami) &amp; <b>Advidi</b> (Amsterdam)</div>
+            <p>Built products from zero and scaled revenue systems.</p>
+            <div class="tags"><span>Ruby</span><span>0→1</span><span>Revenue systems</span></div>
+          </div>
+        </div>
+
+      </div>
+      <p class="earlier">
+        <b>Earlier —</b> Team lead and web developer roles across Bristol and Bucharest (2000–2011),
+        building and leading web product teams in PHP and JavaScript.
+      </p>
+    </div>
+  </section>
+
+  <!-- WRITING & SPEAKING -->
+  <section id="writing">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Writing &amp; speaking</h2>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3>Books</h3>
+          <ul class="list">
+            <li><span class="yr">2022</span><span class="body"><b>Web Development with Julia and Genie</b><span>Co-author · Packt</span></span></li>
+            <li><span class="yr">2019</span><span class="body"><b>Julia 1.0 Programming Complete Reference Guide</b><span>Co-author · Packt</span></span></li>
+            <li><span class="yr">2018</span><span class="body"><b>Julia Programming Projects</b><span>Author · Packt</span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Talks &amp; community</h3>
+          <ul class="list">
+            <li><span class="yr">2017—24</span><span class="body"><b>JuliaCon</b><span>Speaker / organizer — Berkeley, London, Baltimore, Eindhoven</span></span></li>
+            <li><span class="yr">2016—now</span><span class="body"><b>Barcelona Julia Users Group</b><span>Organizer</span></span></li>
+            <li><span class="yr">2015—17</span><span class="body"><b>IronHack Barcelona</b><span>Mentor &amp; trainer</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Education</h2>
+      </div>
+      <ul class="list">
+        <li><span class="yr">2025 — 26</span><span class="body"><b>Postgraduate Diploma, AI &amp; Deep Learning</b><span>Universitat Politècnica de Catalunya (UPC), Barcelona</span></span></li>
+        <li><span class="yr">2018 — 20</span><span class="body"><b>MSc Advanced Computer Science</b><span>University of Liverpool</span></span></li>
+        <li><span class="yr">2016, 18</span><span class="body"><b>Certified Scrum Master</b><span>Scrum Alliance</span></span></li>
+        <li><span class="yr">2007 — 09</span><span class="body"><b>MSc Computing (Cybersecurity)</b><span>University of Bucharest</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <h2>Let's talk</h2>
+        <p>Trying to get AI from prototype to production, or want a senior pair of hands who can architect <em>and</em> build?</p>
+        <a class="btn btn-primary" href="mailto:hello@essenciary.com">hello@essenciary.com</a>
+        <div class="contact-links">
+          <a href="https://github.com/essenciary">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/adriansalceanu/">LinkedIn ↗</a>
+          <a href="https://opentide.ai" target="_blank" rel="noopener">OpenTide ↗</a>
+          <span class="loc">Sitges, Barcelona</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Adrian Salceanu</span>
+    <span class="r">AI Engineering</span>
+  </div>
+</footer>
+
+<dialog id="lightbox" aria-label="Screenshots">
+  <button class="lb-btn lb-close" type="button" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-btn lb-prev" type="button" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button class="lb-btn lb-next" type="button" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  <figure><img alt="" /><figcaption><span class="cap"></span><span class="count"></span></figcaption></figure>
+</dialog>
+
+<script>
+  (function () {
+    var ICON = {
+      zoom: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>',
+      prev: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>',
+      next: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>'
+    };
+
+    function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; }
+
+    function onSwipe(node, fn) {
+      var x0 = null, y0 = null;
+      node.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+      node.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { fn(dx < 0 ? 1 : -1); node._swiped = true; setTimeout(function () { node._swiped = false; }, 350); }
+        x0 = null;
+      });
+    }
+
+    /* ---------- Lightbox ---------- */
+    var dlg = document.getElementById('lightbox');
+    var big = dlg.querySelector('img');
+    var cap = dlg.querySelector('.cap');
+    var count = dlg.querySelector('.count');
+    var gallery = [], at = 0, owner = null;
+
+    function show(i) {
+      at = (i + gallery.length) % gallery.length;
+      var img = gallery[at];
+      big.classList.remove('swap'); void big.offsetWidth; big.classList.add('swap');
+      big.src = img.dataset.full || img.currentSrc || img.src || img.dataset.src;
+      big.alt = img.alt; cap.textContent = img.alt;
+      count.textContent = gallery.length > 1 ? (at + 1) + ' / ' + gallery.length : '';
+      [at - 1, at + 1].forEach(function (j) {  // preload neighbours
+        var n = gallery[(j + gallery.length) % gallery.length];
+        if (n) { var p = new Image(); p.src = n.dataset.full || n.dataset.src || n.src; }
+      });
+      if (owner) owner.go(at);
+    }
+    function openBox(thumb, i) {
+      owner = thumb; gallery = thumb.slides; dlg.classList.toggle('multi', gallery.length > 1);
+      show(i); dlg.showModal();
+    }
+    dlg.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(at - 1); });
+    dlg.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(at + 1); });
+    dlg.querySelector('.lb-close').addEventListener('click', function (e) { e.stopPropagation(); dlg.close(); });
+    big.addEventListener('click', function (e) { e.stopPropagation(); if (gallery.length > 1 && !dlg._swiped) show(at + 1); });
+    dlg.addEventListener('click', function () { if (!dlg._swiped) dlg.close(); });
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(at + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(at - 1); }
+    });
+    dlg.addEventListener('close', function () { big.removeAttribute('src'); owner = null; });
+    onSwipe(dlg, function (d) { if (gallery.length > 1) show(at + d); });
+
+    /* ---------- Thumbnails / carousels ---------- */
+    document.querySelectorAll('.thumb').forEach(function (t) {
+      if (t.classList.contains('logo')) return;  // logo tiles are static
+      var all = Array.prototype.slice.call(t.querySelectorAll('.slides img'));
+      var cur = 0, dots = null;
+      t.slides = all.slice();
+      t.appendChild(el('span', 'zoom', ICON.zoom));
+
+      function go(i) {
+        if (!t.slides.length) return;
+        cur = (i + t.slides.length) % t.slides.length;
+        [cur, cur + 1, cur - 1].forEach(function (k) {  // load the visible slide and its neighbours on demand
+          var im = t.slides[(k + t.slides.length) % t.slides.length];
+          if (im && !im.getAttribute('src') && im.dataset.src) im.src = im.dataset.src;
+        });
+        t.slides.forEach(function (img, k) { img.classList.toggle('on', k === cur); });
+        if (dots) Array.prototype.forEach.call(dots.children, function (d, k) { d.classList.toggle('on', k === cur); });
+      }
+      t.go = go;
+
+      function build() {
+        t.querySelectorAll('.nav, .dots').forEach(function (n) { n.remove(); });
+        dots = null;
+        if (!t.slides.length) { t.classList.add('empty'); t.removeAttribute('tabindex'); t.removeAttribute('role'); return; }
+        if (t.slides.length > 1) {
+          var prev = el('button', 'nav prev', ICON.prev), next = el('button', 'nav next', ICON.next);
+          prev.type = next.type = 'button'; prev.setAttribute('aria-label', 'Previous screenshot'); next.setAttribute('aria-label', 'Next screenshot');
+          prev.addEventListener('click', function (e) { e.stopPropagation(); go(cur - 1); });
+          next.addEventListener('click', function (e) { e.stopPropagation(); go(cur + 1); });
+          dots = el('div', 'dots');
+          t.slides.forEach(function (_, k) {
+            var d = el('button'); d.type = 'button'; d.setAttribute('aria-label', 'Screenshot ' + (k + 1));
+            d.addEventListener('click', function (e) { e.stopPropagation(); go(k); });
+            dots.appendChild(d);
+          });
+          t.appendChild(prev); t.appendChild(next); t.appendChild(dots);
+        }
+        go(Math.min(cur, t.slides.length - 1));
+      }
+
+      all.forEach(function (img) {
+        function fail() { t.slides = t.slides.filter(function (s) { return s !== img; }); img.remove(); build(); }
+        img.addEventListener('error', fail);
+        if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) fail();
+      });
+      build();
+
+      t.addEventListener('click', function () { if (!t.classList.contains('empty') && !t._swiped) openBox(t, cur); });
+      t.addEventListener('keydown', function (e) {
+        if (t.classList.contains('empty')) return;
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBox(t, cur); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+      });
+      onSwipe(t, function (d) { go(cur + d); });
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    var b = document.querySelector('.theme-toggle'), root = document.documentElement;
+    var order = ['auto', 'light', 'dark'];
+    var label = { auto: 'auto (follows your system)', light: 'light', dark: 'dark' };
+    function apply(m) {
+      if (m === 'auto') delete root.dataset.theme; else root.dataset.theme = m;
+      b.dataset.mode = m; b.title = 'Theme: ' + m; b.setAttribute('aria-label', 'Theme: ' + label[m] + '. Click to change.');
+    }
+    apply(root.dataset.theme || 'auto');
+    b.addEventListener('click', function () {
+      var m = order[(order.indexOf(b.dataset.mode) + 1) % order.length];
+      apply(m);
+      try { if (m === 'auto') localStorage.removeItem('theme'); else localStorage.setItem('theme', m); } catch (e) {}
+    });
+  })();
+</script>
+
+</body>
+</html>
