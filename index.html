@@ -368,6 +368,9 @@
   .list li .yr { color: var(--ink-dim); font-size: 0.8rem; min-width: 78px; flex-shrink: 0; padding-top: 3px; font-weight: 500; }
   .list li .body b { color: var(--ink); font-weight: 600; display: block; }
   .list li .body span { color: var(--ink-mid); font-size: 0.92rem; }
+  .list li .body a.book { color: inherit; }
+  .list li .body a.book span { color: var(--ink-dim); font-size: 0.85em; transition: color .18s; }
+  .list li .body a.book:hover, .list li .body a.book:hover span { color: var(--plum); }
 
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
   @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; gap: 32px; } }
@@ -697,9 +700,9 @@
         <div>
           <h3>Books</h3>
           <ul class="list">
-            <li><span class="yr">2022</span><span class="body"><b>Web Development with Julia and Genie</b><span>Co-author · Packt</span></span></li>
-            <li><span class="yr">2019</span><span class="body"><b>Julia 1.0 Programming Complete Reference Guide</b><span>Co-author · Packt</span></span></li>
-            <li><span class="yr">2018</span><span class="body"><b>Julia Programming Projects</b><span>Author · Packt</span></span></li>
+            <li><span class="yr">2022</span><span class="body"><b><a class="book" href="https://www.amazon.com/dp/180181113X" target="_blank" rel="noopener">Web Development with Julia and Genie <span aria-hidden="true">↗</span></a></b><span>Co-author · Packt</span></span></li>
+            <li><span class="yr">2019</span><span class="body"><b><a class="book" href="https://www.amazon.com/Julia-Programming-Complete-Reference-Guide-ebook/dp/B07S1Z9P9X" target="_blank" rel="noopener">Julia 1.0 Programming Complete Reference Guide <span aria-hidden="true">↗</span></a></b><span>Co-author · Packt</span></span></li>
+            <li><span class="yr">2018</span><span class="body"><b><a class="book" href="https://www.amazon.com/Julia-Programming-Projects-building-visualization/dp/178829274X" target="_blank" rel="noopener">Julia Programming Projects <span aria-hidden="true">↗</span></a></b><span>Author · Packt</span></span></li>
           </ul>
         </div>
         <div>
