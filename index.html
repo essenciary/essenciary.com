@@ -395,6 +395,14 @@
     font-size: clamp(1.9rem, 5vw, 2.7rem); line-height: 1; letter-spacing: -0.03em; font-weight: 400;
   }
   .thumb.logo .wordmark b { font-weight: 600; }
+  .thumb.logo .lockup.stack { flex-direction: column; gap: 16px; }
+  .thumb.logo .lockup.stack img { width: clamp(52px, 17%, 76px); }
+  .thumb.logo .models { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .thumb.logo .models span {
+    font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; font-weight: 500;
+    color: #1c1418; background: #fff; border: 1px solid #e4dcd8; border-radius: 7px; padding: 4px 10px;
+  }
+  .thumb.logo .gpu { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #7a2748; }
 
   /* Placeholder until a screenshot is added */
   .thumb.empty { cursor: default; background:
@@ -722,6 +730,14 @@
               <div class="top"><h3>Worktron</h3></div>
               <p>Agent-orchestration platform running autonomous agents in production. Agents audit code for security and SEO and run competitive analysis, triggered on pull requests or on a schedule. Model-independent: works with Anthropic, OpenAI, Kimi, DeepSeek and more.</p>
               <div class="tags"><span>Agents</span><span>Orchestration</span><span>Multi-model</span></div>
+            </div>
+          </article>
+          <article class="pf-card">
+            <div class="thumb logo" data-label="Self-hosted inference"><div class="lockup stack"><img src="img/work/ollama-logo.svg" alt="Ollama logo" width="64" height="64" /><div class="models"><span>llama</span><span>phi</span><span>mistral</span></div><div class="gpu">on cloud GPUs</div></div></div>
+            <div class="pf-body">
+              <div class="top"><h3>Self-hosted inference</h3></div>
+              <p>Open models (Llama, Phi, Mistral) served through Ollama on cloud GPUs, alongside the commercial APIs. Keeps sensitive data in-house, cuts cost on high-volume tasks, and powers the local classification models behind search and the bot.</p>
+              <div class="tags"><span>Ollama</span><span>Open models</span><span>GPU inference</span></div>
             </div>
           </article>
         </div>
